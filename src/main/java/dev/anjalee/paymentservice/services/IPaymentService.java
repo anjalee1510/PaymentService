@@ -1,10 +1,11 @@
 package dev.anjalee.paymentservice.services;
 
 import com.razorpay.RazorpayException;
+import com.stripe.exception.StripeException;
 import org.springframework.stereotype.Service;
 
 
 public interface IPaymentService {
 
-    public String generatePaymentLink(String orderId,Long amount,String phoneNumber,String name,String email) throws RazorpayException;
+    public String generatePaymentLink(String orderId,Long amount,String phoneNumber,String name,String email) throws RazorpayException, StripeException;
 }

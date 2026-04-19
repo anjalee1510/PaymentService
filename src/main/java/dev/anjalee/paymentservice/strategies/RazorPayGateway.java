@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import java.util.concurrent.TimeUnit;
 
 @Component
-public class RazorPay implements PaymentGateway{
+public class RazorPayGateway implements PaymentGateway{
 
     @Autowired
     private com.razorpay.RazorpayClient razorpayClient;
@@ -17,7 +17,7 @@ public class RazorPay implements PaymentGateway{
     @Override
     public String generatePaymentLink(String orderId, Long amount, String phoneNumber, String name, String email) throws RazorpayException {
         JSONObject paymentLinkRequest = new JSONObject();
-        paymentLinkRequest.put("amount",amount);
+        paymentLinkRequest.put("amount",amount*100);
         paymentLinkRequest.put("currency","INR");
         paymentLinkRequest.put("accept_partial",true);
         paymentLinkRequest.put("first_min_partial_amount",100);
@@ -40,7 +40,7 @@ public class RazorPay implements PaymentGateway{
         JSONObject notes = new JSONObject();
         notes.put("policy_name","Jeevan Bima");
         paymentLinkRequest.put("notes",notes);
-        paymentLinkRequest.put("callback_url","https://www.flipkart.com/");
+        paymentLinkRequest.put("callback_url","https://www.shopify.com/");
         paymentLinkRequest.put("callback_method","get");
 
 
