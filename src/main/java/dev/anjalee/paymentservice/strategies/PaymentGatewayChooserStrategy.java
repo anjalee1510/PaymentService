@@ -25,5 +25,6 @@ public class PaymentGatewayChooserStrategy {
 
             double random = ThreadLocalRandom.current().nextDouble();
             return random < RAZORPAY_WEIGHT ? razorpayGateway : stripeGateway;
+
     }
 }
